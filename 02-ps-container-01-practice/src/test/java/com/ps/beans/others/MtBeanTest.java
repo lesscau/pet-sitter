@@ -18,13 +18,8 @@ public class MtBeanTest {
 
     @Test
     public void testConfig() {
-        //TODO 7. Try to use wildcards as well.
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(
-                "classpath:spring/others/collection-config.xml",
-                "classpath:spring/others/date-converter-config.xml",
-                "classpath:spring/others/factory-config.xml",
-                "classpath:spring/others/multiple-types-config.xml"
-        );
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring/others/*-config.xml");
 
         MultipleTypesBean mtBean = (MultipleTypesBean) ctx.getBean("mtBean");
         assertNotNull(mtBean);
