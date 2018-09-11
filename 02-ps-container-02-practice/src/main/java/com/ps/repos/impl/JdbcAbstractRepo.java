@@ -3,11 +3,14 @@ package com.ps.repos.impl;
 import com.ps.base.AbstractEntity;
 import com.ps.repos.AbstractRepo;
 
+import javax.inject.Named;
 import javax.sql.DataSource;
 
 /**
  * Created by iuliana.cosmina on 3/21/16.
  */
+
+@Named
 public class JdbcAbstractRepo<T extends AbstractEntity> implements AbstractRepo<T> {
     protected DataSource dataSource;
 
