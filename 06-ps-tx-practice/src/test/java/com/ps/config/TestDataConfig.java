@@ -1,5 +1,6 @@
 package com.ps.config;
 
+import com.ps.CleanUp;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -81,8 +82,13 @@ public class TestDataConfig {
         return new JdbcTemplate(dataSource());
     }
 
-   @Bean
-   public DataSourceTransactionManager transactionManager(){
-       return new DataSourceTransactionManager(dataSource());
-   }
+    @Bean
+    public DataSourceTransactionManager transactionManager() {
+        return new DataSourceTransactionManager(dataSource());
+    }
+
+    @Bean(destroyMethod = "destroy")
+    public CleanUp cleanUp() {
+        return new CleanUp(userJdbcTemplate());
+    }
 }

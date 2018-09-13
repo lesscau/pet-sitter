@@ -57,7 +57,7 @@ public class TransactionalJdbcRepoTest {
     @Test
     @Transactional @Rollback
     public void testCreate(){
-        int result  = userRepo.createUser(5L, "Diana", "mypass", "diana@opympus.com", UserType.BOTH);
+        int result  = userRepo.createUser(6L, "Diana", "mypass", "diana@opympus.com", UserType.BOTH);
         assertEquals(1, result);
         Set<User> dianas = userRepo.findAllByUserName("Diana", true);
         assertTrue(dianas.size() == 1);
